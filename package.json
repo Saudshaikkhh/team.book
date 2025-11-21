@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --port 5000 --hostname 0.0.0.0",
+    "dev": "cross-env NEXT_DEVTOOLS=0 next dev",
     "build": "next build",
-    "start": "next start --port 5000 --hostname 0.0.0.0",
+    "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -21,6 +21,7 @@
     "@types/node": "^22.13.11",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
+    "cross-env": "^10.1.0",
     "eslint": "^9.23.0",
     "eslint-config-next": "^15.2.3",
     "typescript": "^5.8.2"

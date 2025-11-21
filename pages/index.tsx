@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Home: NextPage = () => {
   const [formData, setFormData] = useState({
@@ -64,6 +64,20 @@ const Home: NextPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  useEffect(() => {
+    const scriptSrc = "https://widgets.sociablekit.com/google-reviews/widget.js";
+    const existingScript = document.querySelector(`script[src="${scriptSrc}"]`);
+
+    if (existingScript) {
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = scriptSrc;
+    script.defer = true;
+    document.body.appendChild(script);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       <Head>
@@ -82,14 +96,14 @@ const Home: NextPage = () => {
             <a href="#pricing" className="text-gray-700 hover:text-primary-600 transition-colors">Pricing</a>
             <a href="#contact" className="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
           </nav>
-          <a href="https://book.cargoforce.com/" className="bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">
+          <a href="https://book.cargoforce.com/" className="book-now-button bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">
             Book Now
           </a>
         </div>
       </header>
 
       <main>
-        <section className="relative bg-gradient-to-br from-blue-50 via-white to-blue-50 py-20 lg:py-32">
+        <section className="relative bg-linear-to-br from-blue-50 via-white to-blue-50 py-20 lg:py-32">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
@@ -99,7 +113,7 @@ const Home: NextPage = () => {
                 Customs duty, handling, pickup, and free boxes and tapes at the warehouse—everything included at the <span className="text-primary-600 font-bold">lowest rate of £4 per kg</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://book.cargoforce.com/" className="bg-primary-600 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg">
+                <a href="https://book.cargoforce.com/" className="book-now-button bg-primary-600 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg">
                   Book Now
                 </a>
                 <a href="#contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg border-2 border-primary-600 hover:bg-primary-50 transition-all font-semibold text-lg">
@@ -120,7 +134,7 @@ const Home: NextPage = () => {
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <div className="bg-linear-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                 <div className="text-4xl mb-4">💰</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Affordable & Transparent Pricing</h3>
                 <p className="text-gray-600">
@@ -128,7 +142,7 @@ const Home: NextPage = () => {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <div className="bg-linear-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                 <div className="text-4xl mb-4">✈️</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Customs Duty Included</h3>
                 <p className="text-gray-600">
@@ -136,7 +150,7 @@ const Home: NextPage = () => {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <div className="bg-linear-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                 <div className="text-4xl mb-4">📦</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Free Boxes & Materials</h3>
                 <p className="text-gray-600">
@@ -144,7 +158,7 @@ const Home: NextPage = () => {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <div className="bg-linear-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
                 <div className="text-4xl mb-4">🚚</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Free Pickup</h3>
                 <p className="text-gray-600">
@@ -155,7 +169,7 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
+        <section className="py-20 bg-linear-to-br from-gray-50 to-blue-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-16">
               Why Choose Us
@@ -252,7 +266,7 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section id="contact" className="py-20 bg-gradient-to-br from-blue-50 to-white">
+        <section id="contact" className="py-20 bg-linear-to-br from-blue-50 to-white">
           <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
               Get a Sales Quote or Enquire
@@ -371,6 +385,20 @@ const Home: NextPage = () => {
                 {isSubmitting ? 'Submitting...' : 'Submit Enquiry'}
               </button>
             </form>
+          </div>
+        </section>
+
+        <section className="py-24 bg-linear-to-br from-blue-50 to-white">
+          <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-12">
+            <h2 className="text-3xl sm:text-4xl font-bold text-left text-gray-900 mb-4">
+              What Our Customers Say
+            </h2>
+            <p className="text-left text-gray-600 mb-12">
+              Real Google reviews from customers who shipped with Cargo Force.
+            </p>
+            <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 px-4 sm:px-12 py-6 sm:py-12">
+              <div className="sk-ww-google-reviews min-h-[460px]" data-embed-id="25624560"></div>
+            </div>
           </div>
         </section>
       </main>

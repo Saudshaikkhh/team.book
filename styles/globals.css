@@ -30,3 +30,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.nextjs-toast {
+  display: none !important;
+}
+
+.book-now-button {
+  color: #fff !important;
+}
