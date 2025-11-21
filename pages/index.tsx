@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { NextPage } from "next";
 import Head from "next/head";
 import { useEffect, useState } from "react";
@@ -79,33 +80,47 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-linear-to-b from-white via-blue-50/40 to-white text-gray-900">
       <Head>
         <title>Cargo Force - Affordable Air Cargo to India from UK</title>
         <meta name="description" content="Cargo to India from UK by Air at £4 per kg. Customs duty, handling, pickup, and free boxes included. Reliable door-to-door service." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="bg-white shadow-sm sticky top-0 z-50">
+      <header className="bg-white/80 backdrop-blur-md border-b border-white/60 sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <div className="text-2xl font-bold">
-            <span className="text-primary-700">CARGO</span><span className="text-gray-900">FORCE</span>
+          <div className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Cargo Force"
+              width={160}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </div>
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8 font-medium">
             <a href="#services" className="text-gray-700 hover:text-primary-600 transition-colors">Services</a>
             <a href="#pricing" className="text-gray-700 hover:text-primary-600 transition-colors">Pricing</a>
             <a href="#contact" className="text-gray-700 hover:text-primary-600 transition-colors">Contact</a>
           </nav>
-          <a href="https://book.cargoforce.com/" className="book-now-button bg-primary-600 text-white px-6 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium">
+          <a href="https://book.cargoforce.com/" className="book-now-button bg-primary-600 text-white px-6 py-2 rounded-full shadow-lg hover:bg-primary-700 transition-colors font-semibold">
             Book Now
           </a>
         </div>
       </header>
 
       <main>
-        <section className="relative bg-linear-to-br from-blue-50 via-white to-blue-50 py-20 lg:py-32">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
+        <section className="relative overflow-hidden py-24">
+          <div className="absolute inset-0 opacity-60">
+            <div className="bg-[radial-gradient(circle_at_top,#e0f2ff,transparent_55%)] w-full h-full"></div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-4xl mx-auto">
+              <div className="inline-flex items-center gap-2 bg-white/80 text-primary-700 px-4 py-2 rounded-full text-sm font-semibold shadow-sm border border-primary-100 mb-6">
+                <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></span>
+                Premium Air Cargo Service
+              </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                 Cargo to India from UK by Air
               </h1>
@@ -113,19 +128,32 @@ const Home: NextPage = () => {
                 Customs duty, handling, pickup, and free boxes and tapes at the warehouse—everything included at the <span className="text-primary-600 font-bold">lowest rate of £4 per kg</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="https://book.cargoforce.com/" className="book-now-button bg-primary-600 text-white px-8 py-4 rounded-lg hover:bg-primary-700 transition-all transform hover:scale-105 font-semibold text-lg shadow-lg">
+                <a href="https://book.cargoforce.com/" className="book-now-button bg-linear-to-r from-primary-500 to-primary-700 text-white px-10 py-4 rounded-full hover:shadow-xl transition-all transform hover:scale-105 font-semibold text-lg shadow-lg">
                   Book Now
                 </a>
-                <a href="#contact" className="bg-white text-primary-600 px-8 py-4 rounded-lg border-2 border-primary-600 hover:bg-primary-50 transition-all font-semibold text-lg">
+                <a href="#contact" className="bg-white text-primary-600 px-10 py-4 rounded-full border border-primary-200 shadow-sm hover:bg-primary-50 transition-all font-semibold text-lg">
                   Get a Quote
                 </a>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
+                {[
+                  { label: "14 yrs", desc: "Trusted cargo experience" },
+                  { label: "£4 /kg", desc: "All-inclusive pricing" },
+                  { label: "120+ cities", desc: "Pan-India coverage" },
+                ].map((item) => (
+                  <div key={item.label} className="bg-white/80 border border-white/70 shadow-lg rounded-2xl py-6 px-5 backdrop-blur">
+                    <p className="text-3xl font-bold text-primary-600">{item.label}</p>
+                    <p className="text-gray-600">{item.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </section>
 
-        <section id="services" className="py-20 bg-white">
+        <section id="services" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-primary-600 font-semibold text-center uppercase tracking-widest mb-3">Why Ship With Us</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
               Reliable Door-to-Door Service by Air
             </h2>
@@ -133,8 +161,8 @@ const Home: NextPage = () => {
               From pick-up at your doorstep in the UK to delivery at the recipient's address in India, we take care of everything for you, ensuring a hassle-free experience.
             </p>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <div className="bg-linear-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-white/90 border border-blue-100 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1">
                 <div className="text-4xl mb-4">💰</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Affordable & Transparent Pricing</h3>
                 <p className="text-gray-600">
@@ -142,7 +170,7 @@ const Home: NextPage = () => {
                 </p>
               </div>
 
-              <div className="bg-linear-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <div className="bg-white/90 border border-blue-100 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1">
                 <div className="text-4xl mb-4">✈️</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Customs Duty Included</h3>
                 <p className="text-gray-600">
@@ -150,7 +178,7 @@ const Home: NextPage = () => {
                 </p>
               </div>
 
-              <div className="bg-linear-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <div className="bg-white/90 border border-blue-100 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1">
                 <div className="text-4xl mb-4">📦</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Free Boxes & Materials</h3>
                 <p className="text-gray-600">
@@ -158,7 +186,7 @@ const Home: NextPage = () => {
                 </p>
               </div>
 
-              <div className="bg-linear-to-br from-blue-50 to-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-1">
+              <div className="bg-white/90 border border-blue-100 p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-1">
                 <div className="text-4xl mb-4">🚚</div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Free Pickup</h3>
                 <p className="text-gray-600">
@@ -169,45 +197,45 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section className="py-20 bg-linear-to-br from-gray-50 to-blue-50">
+        <section className="py-24 bg-linear-to-br from-blue-50 via-white to-blue-100/40">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-16">
               Why Choose Us
             </h2>
 
             <div className="grid lg:grid-cols-2 gap-6 max-w-6xl mx-auto">
-              <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+              <div className="bg-white border border-red-100 shadow-md p-6 rounded-2xl">
                 <h3 className="font-bold text-red-900 mb-2 text-lg">❌ What You Won't Get with Us</h3>
                 <p className="text-red-800">High, hidden shipping costs & unclear pricing structures</p>
               </div>
-              <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-lg">
+              <div className="bg-white border border-green-100 shadow-md p-6 rounded-2xl">
                 <h3 className="font-bold text-green-900 mb-2 text-lg">✅ What You Get with Us</h3>
                 <p className="text-green-800">Lowest rate of £4 per kg with everything included—no hidden fees</p>
               </div>
 
-              <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+              <div className="bg-white border border-red-100 shadow-md p-6 rounded-2xl">
                 <h3 className="font-bold text-red-900 mb-2 text-lg">❌ What You Won't Get with Us</h3>
                 <p className="text-red-800">Unexpected fees for picking up cargo from your doorstep</p>
               </div>
-              <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-lg">
+              <div className="bg-white border border-green-100 shadow-md p-6 rounded-2xl">
                 <h3 className="font-bold text-green-900 mb-2 text-lg">✅ What You Get with Us</h3>
                 <p className="text-green-800">Pickup is completely free in UK mainland, fully included in pricing</p>
               </div>
 
-              <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+              <div className="bg-white border border-red-100 shadow-md p-6 rounded-2xl">
                 <h3 className="font-bold text-red-900 mb-2 text-lg">❌ What You Won't Get with Us</h3>
                 <p className="text-red-800">Extra fees for packing materials and securing your cargo</p>
               </div>
-              <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-lg">
+              <div className="bg-white border border-green-100 shadow-md p-6 rounded-2xl">
                 <h3 className="font-bold text-green-900 mb-2 text-lg">✅ What You Get with Us</h3>
                 <p className="text-green-800">Free boxes and packing materials at our UK warehouse</p>
               </div>
 
-              <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+              <div className="bg-white border border-red-100 shadow-md p-6 rounded-2xl">
                 <h3 className="font-bold text-red-900 mb-2 text-lg">❌ What You Won't Get with Us</h3>
                 <p className="text-red-800">Additional charges for customs clearance on delivery</p>
               </div>
-              <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-lg">
+              <div className="bg-white border border-green-100 shadow-md p-6 rounded-2xl">
                 <h3 className="font-bold text-green-900 mb-2 text-lg">✅ What You Get with Us</h3>
                 <p className="text-green-800">Customs duty in India is included—no extra charges at delivery</p>
               </div>
@@ -215,8 +243,9 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section id="pricing" className="py-20 bg-white">
+        <section id="pricing" className="py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-primary-600 font-semibold text-center uppercase tracking-widest mb-3">Transparent Pricing</p>
             <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
               Quick Price Guide – Door-to-Door Rates to India
             </h2>
@@ -226,8 +255,8 @@ const Home: NextPage = () => {
             </p>
 
             <div className="overflow-x-auto">
-              <table className="w-full bg-white shadow-xl rounded-lg overflow-hidden">
-                <thead className="bg-primary-600 text-white">
+              <table className="w-full bg-white shadow-2xl rounded-3xl overflow-hidden border border-gray-100">
+                <thead className="bg-linear-to-r from-primary-500 to-primary-700 text-white">
                   <tr>
                     <th className="px-6 py-4 text-left font-semibold">Weight (Kg)</th>
                     <th className="px-6 py-4 text-left font-semibold">Air Cargo Rates</th>
@@ -266,14 +295,14 @@ const Home: NextPage = () => {
           </div>
         </section>
 
-        <section id="contact" className="py-20 bg-linear-to-br from-blue-50 to-white">
-          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="contact" className="py-24 bg-linear-to-br from-blue-50 via-white to-blue-100/40">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-4">
               Get a Sales Quote or Enquire
             </h2>
             <p className="text-center text-gray-600 mb-12">Request a call back or send us your shipment details</p>
 
-            <form onSubmit={handleSubmit} className="bg-white p-8 rounded-2xl shadow-xl">
+            <form onSubmit={handleSubmit} className="bg-white/90 p-10 rounded-3xl shadow-2xl border border-white/70 backdrop-blur">
               <div className="grid md:grid-cols-2 gap-6 mb-6">
                 <div>
                   <label className="block text-gray-700 font-medium mb-2">Name</label>
@@ -403,12 +432,18 @@ const Home: NextPage = () => {
         </section>
       </main>
 
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-3 gap-8">
             <div>
-              <div className="text-2xl font-bold mb-4">
-                <span className="text-primary-500">CARGO</span><span className="text-white">FORCE</span>
+              <div className="mb-4">
+                <Image
+                  src="/logo.png"
+                  alt="Cargo Force"
+                  width={160}
+                  height={40}
+                  className="h-10 w-auto"
+                />
               </div>
               <p className="text-gray-400">
                 Your trusted partner for affordable air cargo shipping from UK to India.
