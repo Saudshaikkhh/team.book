@@ -119,7 +119,6 @@ const Home: NextPage = () => {
             <div className="text-center max-w-4xl mx-auto">
               <div className="inline-flex items-center gap-2 bg-white/80 text-primary-700 px-4 py-2 rounded-full text-sm font-semibold shadow-sm border border-primary-100 mb-6">
                 <span className="w-2 h-2 rounded-full bg-primary-500 animate-pulse"></span>
-                Premium Air Cargo Service
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
                 Cargo to India from UK by Air
